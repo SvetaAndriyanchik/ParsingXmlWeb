@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/planes"
+        xmlns:tns="http://www.example.com/planes"
+        elementFormDefault="qualified">
+
+    <element name = "plane" type = "tns:Plane" abstract="true"/>
+    <element name="cargo-plane" type="tns:CargoPlane" substitutionGroup = "tns:plane"/>
+    <element name="passenger-plane" type="tns:PassengerPlane" substitutionGroup="tns:plane"/>
+
+    <element name="planes">
+        <complexType>
+            <sequence>
+                <element ref = "tns:plane" minOccurs="1" maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+
+        <complexType name="Plane">
+            <sequence>
+                <element name="model" type="tns:Model" />
+                <element name="origin" type="string" />
+                <element name="parameters" type="tns:Parameters" />
+            </sequence>
+            <attribute type = "tns:ID" name = "id"/>
+        </complexType>
+
+        <complexType name="Parameters">
+            <sequence>
+                <element name = "length" type="positiveInteger"/>
+                <element name = "width" type="positiveInteger"/>
+                <element name = "height" type="positiveInteger"/>
+                <element name = "price" type="positiveInteger"/>
+            </sequence>
+        </complexType>
+
+
+        <complexType name="CargoPlane">
+            <complexContent>
+                <extension base="tns:Plane">
+                    <sequence>
+                        <element name = "weight-capacity" type = "positiveInteger"/>
+                        <element name = "cargo-type" type = "string"/>
+                    </sequence>
+                </extension>
+            </complexContent>
+        </complexType>
+
+        <complexType name="PassengerPlane">
+            <complexContent>
+                <extension base="tns:Plane">
+                    <sequence>
+                        <element name = "seats-capacity" type = "positiveInteger"/>
+                        <element name = "passengers-type" type = "string"/>
+                    </sequence>
+                </extension>
+            </complexContent>
+        </complexType>
+
+    <simpleType name="ID">
+        <restriction base="ID">
+            <pattern value="([a-zA-Z])[a-zA-Z0-9]{7,19}"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name = "Model">
+        <restriction base="string">
+            <enumeration value="Boeing"></enumeration>
+            <enumeration value="SU"></enumeration>
+            <enumeration value="MI"></enumeration>
+        </restriction>
+    </simpleType>
+
+</schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<planes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.com/planes"
+        xsi:schemaLocation="http://www.example.com/planes planeSchema.xsd">
+
+    <cargo-plane id = "a1234567">
+        <model>Boeing</model>
+        <origin>USA</origin>
+        <parameters>
+            <length>30</length>
+            <width>10</width>
+            <height>2</height>
+            <price>1000</price>
+        </parameters>
+        <weight-capacity>200</weight-capacity>
+        <cargo-type>High-weights</cargo-type>
+    </cargo-plane>
+
+    <passenger-plane id = "b1234567">
+        <model>MI</model>
+        <origin>Russia</origin>
+        <parameters>
+            <length>50</length>
+            <width>15</width>
+            <height>3</height>
+            <price>2000</price>
+        </parameters>
+        <seats-capacity>260</seats-capacity>
+        <passengers-type>Usual</passengers-type>
+    </passenger-plane>
+
+    <passenger-plane id = "c4567890">
+        <model>MI</model>
+        <origin>Russia</origin>
+        <parameters>
+            <length>50</length>
+            <width>15</width>
+            <height>3</height>
+            <price>2000</price>
+        </parameters>
+        <seats-capacity>260</seats-capacity>
+        <passengers-type>Usual</passengers-type>
+    </passenger-plane>
+</planes>
